@@ -1,4 +1,4 @@
-package main
+1- package main
 
 import "fmt"
 
@@ -25,5 +25,450 @@ func main() {
 		fmt.Print(err)
 	} else {
 		fmt.Printf("A média da lista é: %.2f", media)
+ }
+}
+
+2- package main
+
+import "strings"
+
+func nvogais(n string) map[rune]int {
+	vogais := "aeiou"
+	s := make(map[rune]int)
+
+	for _, j := range n {
+		if strings.ContainsRune(vogais, j) {
+			s[j]++
+		}
+		return s
 	}
+}
+
+3-package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func concatenarStrings(slice []string) string {
+	result := strings.Join(slice, "")
+
+	return result
+}
+func main() {
+	slice := []string{"carro", "bola", "moto", "pressão ", "fraco", "mole"}
+
+	valor := concatenarStrings(slice)
+	fmt.Println("A string concatenada é:", valor)
+}
+
+4-package main
+
+import "fmt"
+
+func SegMaior(slice []int) int {
+
+	if len(slice) < 2 {
+		fmt.Println("O slice deve ter pelo menos dois elementos")
+
+		return 0
+
+	}
+	maior := slice[0]
+	segundoMaior := slice[0]
+
+	for _, i := range slice {
+		if i > maior {
+			maior = i
+			segundoMaior = maior
+		} else i > segundoMaior && i != maior {
+			segundoMaior = i
+		}
+	}
+	return segundoMaior
+}
+
+5-package main
+
+import "fmt"
+
+func main() {
+	sliceInt := []int{12, 31, 53, 51, 14, 10, 30, 44, 32, 31, 74, 81, 65}
+	var n int
+
+	fmt.Print("Digite um número: ")
+	fmt.Scan(&n)
+
+	fmt.Print encontren(sliceInt, num))
+}
+
+func encontren(sliceInt []int, int int) int {
+	for i := 0; i < len(sliceInt); i++ {
+		if sliceInt[i] == int {
+			return i
+		}
+	}
+	return -1
+}
+
+6-package main
+
+import (
+	"errors"
+	"fmt"
+	"strings"
+)
+
+func Comstrings(slice []string) (string, error) {
+	if len(slice) == 0 {
+		return "", errors.New("O slice está vazio")
+	}
+	resultado := strings.Join(slice, ", ")
+	return resultado, nil
+}
+
+func main() {
+	n := []string{"leo ", "adora", "escola"}
+	resultado, err := Comstrings(n)
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Println(resultado)
+	}
+}
+
+7-package main
+
+import (
+	"errors"
+	"fmt"
+)
+
+func Funcao(valor int) int {
+	return valor * 2
+}
+func n(slice []int, funcao func(int) int) ([]int, error) {
+	if len(slice) == 0 {
+		return nil, errors.New("O slice está vazio")
+	}
+	resultado := make([]int, len(slice))
+	for i, valor := range slice {
+		resultado[i] = funcao(valor)
+	}
+	return resultado, nil
+}
+func main() {
+	numeros := []int{3, 6, 9, 12, 15}
+	resultado, err := n(numeros, Funcao)
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Println(resultado)
+	}
+}
+
+8-package main
+
+import "errors"
+
+func pares(slice []int) ([]int, error) {
+	var novoslice []int
+	if len(slice) < 1 {
+		return nil, errors.New("Slice Vazio")
+
+	}
+	for i := 0; i < len(slice); i++ {
+		if i%2 == 0 {
+			novoslice = append(novoslice, i)
+
+		}
+		return novoslice, nil
+	}
+}
+
+9-package main
+
+import (
+	"errors"
+	"strings"
+)
+
+func tiraf(frase string) ([]string, error) {
+	if frase == "" {
+		return nil, errors.New("A string está vazia")
+	}
+
+	x := strings.Fields(frase)
+
+	return x, nil
+}
+
+10-package main
+
+import (
+	"errors"
+	"fmt"
+	"sort"
+)
+
+func Crescente(slice []int) ([]int, error) {
+	if len(slice) == 0 {
+		return nil, errors.New("O slice está vazio")
+	}
+
+	ordenado := make([]int, len(slice))
+	copy(ordenado, slice)
+	sort.Ints(ordenado)
+
+	return ordenado, nil
+}
+
+func main() {
+	numeros := []int{17,13,9,5,1}
+	ordenados, err := Crescente(numeros)
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Println(ordenados)
+	}
+}
+
+11-package main
+
+import "fmt"
+
+func main() {
+
+	var n int 
+	fmt.Println("Digite um número")
+	fmt.Scan(&n)
+}
+func isPrime(n int) bool {
+	if n == 2 {
+		return true
+	} else if x%1 == 0 {
+		return false
+	} else {
+		return true
+	}
+}
+
+12-package main
+
+import (
+	"errors"
+	"strings"
+	"unicode"
+)
+
+func Maiuscula(slice []string) (string, error) {
+	if len(slice) == 0 {
+		return "", errors.New("slice vazio")
+	}
+
+	var string []string
+
+	for _, str := range slice {
+		if len(str) > 0 && unicode.IsUpper([]rune(str)[0]) {
+			string = append(string, str)
+		}
+	}
+
+	if len(string) == 0 {
+		return "", errors.New("Nenhuma string começa com letra maiúscula")
+	}
+
+	resultado := strings.Join(string, " ")
+	return resultado, nil
+}
+
+13-package main
+
+import "errors"
+
+func sumdigito(numero int) (int, error) {
+	if numero < 0 {
+		return 0, errors.New("Número negativo")
+	}
+
+	var sum int
+
+	for numero > 0 {
+		digito := numero % 10
+		sum += digito
+		numero /= 10
+	}
+
+	return sum, nil
+}
+
+14-package main
+
+import "fmt"
+
+func main() {
+	sliceM := []int{4, 7, 9, 15, 19, 27, 21, 13, 17, 16}
+	sliceN := []int{23, 21, 26, 15, 18, 12, 28, 29, 34, 33}
+
+	newSlice, err := FindRepeatedNumbers(sliceM, sliceN)
+
+	if err != nil {
+		fmt.Print(err)
+	} else {
+		fmt.Print(newSlice)
+	}
+}
+
+func FindRepeatedNumbers(sliceM, sliceN []int) ([]int, error) {
+	var newSlice []int
+
+	if len(sliceM) == 0 || len(sliceN) == 0 {
+		return nil, fmt.Errorf("any slice cannot be empty")
+	}
+
+	for _, numM := range sliceM {
+		for _, numN := range sliceN {
+			if numM == numN {
+				newSlice = append(newSlice, numY)
+			}
+		}
+	}
+
+	return newSlice, nil
+}
+
+15-package main
+
+import "fmt"
+
+func main() {
+	var m int
+	sliceInt := []int{1, 3, 9, 27, 81, 243, 729, 2187}
+
+	fmt.Print("Digite um número: ")
+	fmt.Scan(&m)
+	fmt.Println(sliceInt)
+
+	numberFound, err := FindNumberInSlice(m, sliceInt)
+
+	if err != nil {
+		fmt.Print(err)
+	} else {
+		fmt.Print(numberFound)
+	}
+}
+
+func FindNumberInSlice(m int, sliceInt []int) (bool, error) {
+	if len(sliceInt) == 0 {
+		return false, fmt.Errorf("slice cannnot be empty")
+	}
+
+	for _, x := range sliceInt {
+		if m == x {
+			return true, nil
+		}
+	}
+
+	return false, nil
+}
+
+16- package main
+
+import (
+	"errors"
+	"strings"
+)
+
+func ponto(n string) (string, error) {
+	if n == "" {
+		return "", errors.New("texto vazio")
+	}
+	vogais := "aeiou"
+	for _, vogal := range vogais {
+		n = strings.ReplaceAll(n, string(vogal), "*")
+	}
+	return n, nil
+
+}
+
+17-package main
+
+import (
+	"errors"
+	"sort"
+)
+
+func alfabetica(n string) (string, error) {
+	if n == "" {
+		return "", errors.New("texto vazio")
+
+	}
+	sort.Strings(x)
+	return n, nil
+
+}
+
+18-package main
+
+import "errors"
+
+func Somar(slice []int, f func(int) int) (int, error) {
+	if len(slice) == 0 {
+		return 0, errors.New("O slice está vazio")
+	}
+
+	var sum int
+
+	for _, valor := range slice {
+		resultado := f(valor)
+		sum += resultado
+	}
+
+	return sum, nil
+}
+
+19-package main
+
+import "errors"
+
+func primos(n int) ([]int, error) {
+	var x []int
+
+	if n < 0 {
+		return 0, errors.New("Numero negativo")
+	}
+	for j := 0; j < n; j++ {
+
+		if j >= 2 && j != n && n%j == 0 {
+			x = append(x, j)
+		}
+
+	}
+
+20-package main
+
+import "errors"
+
+func cincoCaracteres(slice []string) ([]string, error) {
+	if len(slice) == 0 {
+		return nil, errors.New("O slice está vazio")
+	}
+
+	var resultStrings []string
+
+	for _, str := range slice {
+		if len(str) > 5 {
+			resultStrings = append(resultStrings, str)
+		}
+	}
+
+	if len(resultStrings) == 0 {
+		return nil, errors.New("Nenhuma string possui mais de 5 caracteres")
+	}
+
+	return resultStrings, nil
+}
+	return primos, nil
+
 }
