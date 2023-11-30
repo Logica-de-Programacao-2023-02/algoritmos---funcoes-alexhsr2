@@ -175,7 +175,7 @@ import "errors"
 func pares(slice []int) ([]int, error) {
 	var novoslice []int
 	if len(slice) < 1 {
-		return nil, errors.New("Slice Vazio")
+		return nil, errors.New("O slice está vazio")
 
 	}
 	for i := 0; i < len(slice); i++ {
@@ -264,7 +264,7 @@ import (
 
 func Maiuscula(slice []string) (string, error) {
 	if len(slice) == 0 {
-		return "", errors.New("slice vazio")
+		return "", errors.New("O slice está vazio")
 	}
 
 	var string []string
@@ -382,7 +382,7 @@ import (
 
 func ponto(n string) (string, error) {
 	if n == "" {
-		return "", errors.New("texto vazio")
+		return "", errors.New("A string está vazia")
 	}
 	vogais := "aeiou"
 	for _, vogal := range vogais {
@@ -401,7 +401,7 @@ import (
 
 func alfabetica(n string) (string, error) {
 	if n == "" {
-		return "", errors.New("texto vazio")
+		return "", errors.New("O slice está vazio")
 
 	}
 	sort.Strings(x)
